@@ -1,13 +1,6 @@
-import { Listener, ProjectStatus } from '../utils/anyTypes';
-import { Project } from './Project';
-
-class State<T> {
-  protected listeners: Listener<T>[] = [];
-
-  addListener(listenerFn: Listener<T>) {
-    this.listeners.push(listenerFn);
-  }
-}
+import { Project } from '../classes/Project';
+import { ProjectStatus } from '../typing/enums';
+import { State } from './StateCore';
 
 class ProjectState extends State<Project> {
   private projects: Project[] = [];

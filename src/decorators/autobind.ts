@@ -1,8 +1,4 @@
-export default function AutoBinding(
-  _: any,
-  _2: string,
-  descriptor: PropertyDescriptor
-) {
+export function AutoBind(_: any, _2: string, descriptor: PropertyDescriptor) {
   const originalFn = descriptor.value;
   const newDescriptor: PropertyDescriptor = {
     configurable: true,

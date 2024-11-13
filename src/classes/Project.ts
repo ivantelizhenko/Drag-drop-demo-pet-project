@@ -1,4 +1,4 @@
-import { ProjectStatus } from '../utils/anyTypes';
+import { ProjectStatus } from '../typing/enums';
 
 export class Project {
   constructor(

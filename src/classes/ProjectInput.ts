@@ -1,8 +1,9 @@
-import AutoBinding from '../utils/decorators';
-import Validatable from '../utils/anyTypes';
-import validate from '../utils/utils';
+import { AutoBind } from '../decorators/autobind';
+import { projectState } from '../state/ProjectState';
+import { Validatable } from '../typing/interfaces';
 
-import { projectState } from './States';
+import validate from '../utils/validate';
+
 import { Component } from './Component';
 
 export class ProjectInput extends Component<HTMLDivElement, HTMLFormElement> {
@@ -64,7 +65,7 @@ export class ProjectInput extends Component<HTMLDivElement, HTMLFormElement> {
     return [enteredTitle, enteredDescription, +enteredPeople];
   }
 
-  @AutoBinding
+  @AutoBind
   private submitHandler(event: Event) {
     event.preventDefault();
     const userInput = this.gatherUserInput();

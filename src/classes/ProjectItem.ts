@@ -1,5 +1,6 @@
-import { Draggable } from '../utils/anyTypes';
-import AutoBinding from '../utils/decorators';
+import { AutoBind } from '../decorators/autobind';
+import { Draggable } from '../typing/interfaces';
+
 import { Component } from './Component';
 import { Project } from './Project';
 
@@ -22,13 +23,13 @@ export class ProjectItem
     this.configure();
   }
 
-  @AutoBinding
+  @AutoBind
   dragStartHandler(event: DragEvent) {
     event.dataTransfer!.setData('text/plain', this.project.id);
     event.dataTransfer!.effectAllowed = 'move';
   }
 
-  @AutoBinding
+  @AutoBind
   dragEndHandler(_: DragEvent) {
     console.log('Drag end');
   }

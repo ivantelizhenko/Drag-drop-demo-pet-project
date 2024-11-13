@@ -1,10 +1,11 @@
-import { DragItem, ProjectStatus } from '../utils/anyTypes';
-import AutoBinding from '../utils/decorators';
+import { AutoBind } from '../decorators/autobind';
+import { projectState } from '../state/ProjectState';
+import { ProjectStatus } from '../typing/enums';
+import { DragItem } from '../typing/interfaces';
+
 import { Component } from './Component';
 import { Project } from './Project';
 import { ProjectItem } from './ProjectItem';
-
-import { projectState } from './States';
 
 export class ProjectList
   extends Component<HTMLDivElement, HTMLElement>
@@ -20,7 +21,7 @@ export class ProjectList
     this.renderContent();
   }
 
-  @AutoBinding
+  @AutoBind
   dragOverHandler(event: DragEvent) {
     if (event.dataTransfer && event.dataTransfer.types[0] === 'text/plain') {
       event.preventDefault();
@@ -29,7 +30,7 @@ export class ProjectList
     }
   }
 
-  @AutoBinding
+  @AutoBind
   dropHandler(event: DragEvent) {
     const dropedProjectIdevent = event.dataTransfer!.getData('text/plain');
     projectState.moveProject(
@@ -38,7 +39,7 @@ export class ProjectList
     );
   }
 
-  @AutoBinding
+  @AutoBind
   dragLeaveHandler(_: DragEvent) {
     const listEl = this.element.querySelector('ul')!;
     listEl.classList.remove('droppable');
